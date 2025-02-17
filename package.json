@@ -1,0 +1,28 @@
+{
+	"name": "@agado/starter",
+	"version": "1.0.0",
+	"description": "A Fastify Prisma TypeScript REST API starter",
+	"scripts": {
+		"start": "pnpm --filter @agado/api-starter start",
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"build:contract": "turbo build --filter=@agado/api-starter-contract",
+		"build:api": "turbo build --filter=@agado/api-starter",
+		"db:migrate": "pnpm --filter @agado/api-starter prisma:migrate",
+		"check": "turbo run check"
+	},
+	"keywords": [
+		"fastify",
+		"prisma",
+		"typescript",
+		"auth0",
+		"openapi",
+		"ts-rest",
+		"turbo",
+		"sentry"
+	],
+	"devDependencies": {
+		"turbo": "^2.4.2"
+	},
+	"packageManager": "pnpm@10.3.0"
+}

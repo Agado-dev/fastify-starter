@@ -1,0 +1,40 @@
+{
+  "name": "@agado/api-starter-contract",
+  "version": "1.0.0",
+  "description": "API contract",
+  "private": true,
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/contract.js",
+  "types": "./dist/contract.d.ts",
+  "exports": {
+    ".": "./dist/contract.js"
+  },
+  "engines": {
+    "node": "22.x.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "release": "release-it --ci",
+    "test:unit": "vitest",
+    "format": "biome format . --write",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint . --write",
+    "check": "biome check ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.13.1",
+    "typescript": "5.7.3",
+    "vite": "6.1.0",
+    "vite-plugin-dts": "4.5.0"
+  },
+  "peerDependencies": {
+    "@ts-rest/core": "^3.52.x",
+    "zod": "^3.24.x"
+  },
+  "release-it": {
+    "git": false
+  }
+}
