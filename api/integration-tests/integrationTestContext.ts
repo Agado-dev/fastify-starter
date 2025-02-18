@@ -67,8 +67,7 @@ export class IntegrationTestContext {
       `pnpm prisma:generate && DATABASE_URL=${dbUrl} pnpm prisma:migrate`,
     );
     console.log(stdout);
-    stderr;
-    if (stderr) {
+    if (stderr?.length) {
       console.warn(stderr);
     }
     return dbUrl;

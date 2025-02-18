@@ -31,5 +31,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
 
-      - name: Build
-        run: pnpm i && pnpm build && pnpm check
+      - name: Build, test and lint
+        run: |
+          echo "APP_ENV=LOCAL" >> ./api/.env.test
+          echo "AUTH_ISSUER=${{ vars.AUTH_ISSUER }}" >> ./api/.env.test
+          echo "AUTH0_MANAGEMENT_API_CLIENT_ID=${{ secrets.AUTH0_MANAGEMENT_API_CLIENT_ID }}" >> ./api/.env.test
+          echo "AUTH0_MANAGEMENT_API_CLIENT_SECRET=${{ secrets.AUTH0_MANAGEMENT_API_CLIENT_SECRET }}" >> ./api/.env.test
+          echo "DATABASE_URL=postgresql://postgres:admin@host:5432/api-starter?schema=api-starter" >> ./api/.env.test
+          echo "PRISMA_OPTIMIZE_ENABLED=false" >> ./api/.env.test
+          echo "PRISMA_OPTIMIZE_API_KEY=NOT_REQUIRED_FOR_PR" >> ./api/.env.test
+          pnpm i && pnpm run ci
