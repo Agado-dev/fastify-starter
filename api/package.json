@@ -17,7 +17,7 @@
     "serve:debug": "nodemon --inspect --trace-warnings --import @sentry/node/preload dist/main.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy && prisma db seed",
-    "test:unit": "vitest",
+    "test:unit": "CONFIG_PATH=.env.test vitest",
     "test": "npm-run-all --parallel test:unit test:integration",
     "test:integration": "CONFIG_PATH=.env.test vitest -c vitest.integration.config.ts",
     "format": "biome format . --write",
@@ -77,7 +77,7 @@
     "testcontainers": "^10.18.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.6"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

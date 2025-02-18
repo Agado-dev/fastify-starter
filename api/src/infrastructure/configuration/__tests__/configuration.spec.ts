@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { getPgClientConfig } from "../appConfig.js";
 
 describe("getPgClientConfig", () => {
