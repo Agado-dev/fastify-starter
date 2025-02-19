@@ -9,5 +9,19 @@ export default defineConfig({
 
     include: ["./integration-tests/**/*.integration.spec.ts"],
     hookTimeout: 20_000,
+
+    coverage: {
+      clean: false,
+      provider: "istanbul",
+      include: ["**/src/**/*.ts"],
+      exclude: [
+        "**/__tests__/**",
+        "**/*.d.ts",
+        "**/*.spec.ts",
+        "**/*.model.ts",
+      ],
+      reporter: ["text", "json-summary"],
+      reportsDirectory: "coverage-integration",
+    },
   },
 });
