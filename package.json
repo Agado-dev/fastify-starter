@@ -6,12 +6,13 @@
 		"start": "pnpm --filter @agado/api-starter start",
 		"build": "turbo build",
 		"test": "turbo test",
+		"test:coverage": "turbo test:coverage",
 		"dev": "turbo dev",
 		"build:contract": "turbo build --filter=@agado/api-starter-contract",
 		"build:api": "turbo build --filter=@agado/api-starter",
 		"db:migrate": "pnpm --filter @agado/api-starter prisma:migrate",
 		"check": "turbo run check",
-		"ci": "pnpm build && pnpm test && pnpm check"
+		"ci": "pnpm build && pnpm test:coverage && pnpm check"
 	},
 	"keywords": [
 		"fastify",

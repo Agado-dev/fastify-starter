@@ -41,3 +41,19 @@ jobs:
           echo "PRISMA_OPTIMIZE_ENABLED=false" >> ./api/.env.test
           echo "PRISMA_OPTIMIZE_API_KEY=NOT_REQUIRED_FOR_PR" >> ./api/.env.test
           pnpm i && pnpm run ci
+
+      - name: Comment API unit test coverage in PR
+        run: api/scripts/comment-coverage.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COVERAGE_FILE: "api/coverage-unit/coverage-summary.json"
+          TYPE: "Unit"
+
+      - name: Comment API integration test coverage in PR
+        run: api/scripts/comment-coverage.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          COVERAGE_FILE: "api/coverage-integration/coverage-summary.json"
+          TYPE: "Integration"

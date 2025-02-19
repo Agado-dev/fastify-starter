@@ -9,9 +9,8 @@ export default defineConfig({
     include: ["**/__tests__/*.spec.ts"],
 
     coverage: {
-      enabled: false,
       clean: false,
-      provider: "v8",
+      provider: "istanbul",
       include: ["**/src/**/*.ts"],
       exclude: [
         "**/__tests__/**",
@@ -19,8 +18,8 @@ export default defineConfig({
         "**/*.spec.ts",
         "**/*.model.ts",
       ],
-      reporter: ["lcovonly", "html"],
-      reportsDirectory: "coverage",
+      reporter: ["text", "json-summary"],
+      reportsDirectory: "coverage-unit",
     },
   },
 });
